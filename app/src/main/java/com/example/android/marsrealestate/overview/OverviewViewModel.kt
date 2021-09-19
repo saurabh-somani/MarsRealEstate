@@ -48,9 +48,8 @@ class OverviewViewModel : ViewModel() {
      */
     private fun getMarsRealEstateProperties() {
         viewModelScope.launch {
-            val properties = MarsApi.retrofitService.getProperties()
             try {
-                val listResult = properties.await()
+                val listResult = MarsApi.retrofitService.getProperties()
                 _response.value = "Success: ${listResult.size} Mars properties received"
             } catch (e: Exception) {
                 _response.value = "Failure: " + e.message
